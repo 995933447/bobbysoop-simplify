@@ -1,0 +1,22 @@
+{
+    "name": "yangzhouhong/bobbys-oop",
+    "description": "Php oop frame component library",
+    "type": "library",
+    "license": "Mit",
+    "authors": [
+        {
+            "name": "yangzhouhong",
+            "email": "yangzhouhong@bobby.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Bobby\\": "src/"
+        },
+        "files": [
+            "src/Contract/Http/Request.php"
+        ]
+    }
+}
