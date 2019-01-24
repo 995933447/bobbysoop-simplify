@@ -18,11 +18,11 @@ class RouteProvider extends Provider
 	{
 		$router = $this->container->make('\\Bobby\\Contract\\Route\\Route');
 
-		list('isCache', 'cacheKey') = Config::get('app.route.cache');
+		extract(Config::get('app.route.persistence'));
 
-		$router->setCacheKey($cacheKey);
+		$router->setCacheKey($key);
 
-		if($isCache && $router->existCache()) {
+		if($persistent && $router->existCache()) {
 
 			return $router->useCacheRoutes();
 
@@ -33,7 +33,7 @@ class RouteProvider extends Provider
 		$file = Config::get('app.route.file');
 		require $file;
 
-		if($isCache) {
+		if($persistent) {
 			$router->cacheRoutes();
 		} else {
 			$router->clearCache();
