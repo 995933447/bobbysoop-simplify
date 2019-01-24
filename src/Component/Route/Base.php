@@ -181,7 +181,7 @@ class Base implements BaseRouteContract
 			'route_aliases' => $this->routeAliases
 		];
 
-		apcu_store($this->cacheKey, $cacheRoutes);
+		apcu_add($this->cacheKey, $cacheRoutes);
 	}
 
 	/**
