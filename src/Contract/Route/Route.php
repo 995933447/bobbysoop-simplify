@@ -44,4 +44,35 @@ interface Route
 	 */
 	public function findRoute($method, $uri);
 
+	/**
+	 * [cacheRoute 缓存路由]
+	 * @return [type] [description]
+	 */
+	public function cacheRoutes();
+
+	/**
+	 * [existCache 检查是否使用路由缓存]
+	 * @return [type] [description]
+	 */
+	public function existCache();
+
+	/**
+	 * [useCacheRoutes 使用路由缓存]
+	 * @return [type] [description]
+	 */
+	public function useCacheRoutes();
+
+	/**
+	 * [clearCache 清理路由缓存]
+	 * @return [type] [description]
+	 */
+	public function clearCache();
+
+	/**
+	 * [setCacheKey 设置缓存key]
+	 * @param  [type] $key [description]
+	 * @return [type]      [description]
+	 */
+	public function setCacheKey($key);
+
 }
