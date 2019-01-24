@@ -16,7 +16,7 @@ class Base implements BaseRouteContract
 	protected $countGroupStack = 0;
 	protected $groupQueue = [];
 	protected $currentRoute;
-	protected $cacheKey = 'cache_routes';
+	protected $cacheKey;
 
 	/**
 	 * [controllernamespace 设置控制器默认命名空间]
@@ -212,6 +212,16 @@ class Base implements BaseRouteContract
 	public function clearCache()
 	{
 		apcu_delete($this->cacheKey);
+	}
+
+	/**
+	 * [setCacheKey 设置缓存key]
+	 * @param  [type] $key [description]
+	 * @return [type]      [description]
+	 */
+	public function setCacheKey($key)
+	{
+		$this->cacheKey = $key;
 	}
 
 }
