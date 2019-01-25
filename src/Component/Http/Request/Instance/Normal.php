@@ -3,7 +3,7 @@ namespace Bobby\Component\Http\Request\Instance;
 
 use Bobby\{
     Contract\Http\Request as RequestContract,
-    Component\Http\Request\Instance\RequestTrait
+    Component\Http\Request\Instance\FilterTrait
 };
 
 
@@ -13,7 +13,7 @@ use Bobby\{
 class Normal implements RequestContract
 {
 
-    use RequestTrait;
+    use FilterTrait;
 
     private $server;
 

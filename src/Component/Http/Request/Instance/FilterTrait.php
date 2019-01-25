@@ -3,7 +3,7 @@ namespace Bobby\Component\Http\Request\Instance;
 
 use Bobby\Component\Purifier\Purifier;
 
-trait RequestTrait
+trait FilterTrait
 {
 
 	public function setGlobalFilter(array $callbacks)
