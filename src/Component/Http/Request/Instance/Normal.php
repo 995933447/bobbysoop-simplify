@@ -1,7 +1,11 @@
 <?php
 namespace Bobby\Component\Http\Request\Instance;
 
-use Bobby\Contract\Http\Request as RequestContract;
+use Bobby\{
+    Contract\Http\Request as RequestContract;
+    Component\Purifier\Purifier;
+}
+
 
 /**
  * 一般模式(cli or fpm or apache etc)http请求封装组件
@@ -171,18 +175,7 @@ class Normal implements RequestContract
         list($method, $parameter) = isset($name[1]) ? $name : [$name[0], null];
         $value = is_null($parameter) ? $this->$method() : $this->$method($parameter);
 
-        return $callbacks ? $this->filterVar($value, $callbacks) : $value;
-    }
-
-    private function filterVar($value, $callbacks)
-    {
-        if(is_array($value)) foreach ($value as $k => $v) $value[$k] = $this->filterVar($v, $callbacks);
-
-        else return array_reduce($callbacks, function($value, $callback) {
-                return $callback($value);
-            }, $value);
-
-        return $value;
+        return $callbacks ? Purifier::filterByCallBacks($value, $callbacks) : $value;
     }
 
 }
