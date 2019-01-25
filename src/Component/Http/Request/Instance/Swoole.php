@@ -4,7 +4,7 @@ namespace Bobby\Component\Http\Request\Instance;
 use Bobby\{
     Contract\Http\Request as RequestContract,
     Component\Http\Request\Instance\RequestTrait
-}
+};
 
 /**
  * http(swoole模式)请求封装组件
