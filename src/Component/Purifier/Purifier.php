@@ -1,7 +1,9 @@
 <?php 
 namespace Bobby\Component\Purifier;
 
-class Purifier
+use Bobby\Contract\Purifier\Purifier as PurifierContract;
+
+class Purifier implements PurifierContract
 {
 	public static function filterByCallBacks($var, array $callbacks)
 	{

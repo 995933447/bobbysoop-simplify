@@ -3,7 +3,7 @@ namespace Bobby\Component\Http\Request\Instance;
 
 use Bobby\{
     Contract\Http\Request as RequestContract;
-    Component\Purifier\Purifier;
+    Component\Http\Request\Instance\RequestTrait;
 }
 
 
@@ -12,6 +12,8 @@ use Bobby\{
  */
 class Normal implements RequestContract
 {
+
+    use RequestTrait;
 
     private $server;
 
@@ -160,22 +162,6 @@ class Normal implements RequestContract
     public function time()
     {
         return $this->server('request_time');
-    }
-
-    public function setGlobalFilter(array $callbacks)
-    {
-        $this->filter = $callbacks;
-    }
-
-    public function filter(string $name, array $callbacks = null, $append = true)
-    {
-        if($append && $this->filter) $callbacks = array_merge($this->filter, $callbacks);
-        $name = explode('.', $name, 2);
-
-        list($method, $parameter) = isset($name[1]) ? $name : [$name[0], null];
-        $value = is_null($parameter) ? $this->$method() : $this->$method($parameter);
-
-        return $callbacks ? Purifier::filterByCallBacks($value, $callbacks) : $value;
     }
 
 }
