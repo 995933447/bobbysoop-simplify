@@ -2,8 +2,8 @@
 namespace Bobby\Component\Http\Request\Instance;
 
 use Bobby\{
-    Contract\Http\Request as RequestContract;
-    Component\Http\Request\Instance\RequestTrait;
+    Contract\Http\Request as RequestContract,
+    Component\Http\Request\Instance\RequestTrait
 }
 
 /**
@@ -11,7 +11,7 @@ use Bobby\{
  */
 class Swoole implements RequestContract
 {
-    
+
     use RequestTrait;
 
     private $request;
