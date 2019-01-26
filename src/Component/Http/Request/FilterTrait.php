@@ -22,5 +22,4 @@ trait FilterTrait
 
 	    return $callbacks ? Purifier::filterByCallBacks($value, $callbacks) : $value;
 	}
-
 }

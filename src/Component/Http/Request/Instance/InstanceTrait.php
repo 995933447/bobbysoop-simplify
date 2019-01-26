@@ -97,5 +97,4 @@ trait InstanceTrait
 	    return $this->server('request_time');
 	}
 
-
 }
