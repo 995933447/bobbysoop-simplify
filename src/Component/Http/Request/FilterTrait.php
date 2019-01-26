@@ -1,10 +1,11 @@
 <?php 
-namespace Bobby\Component\Http\Request\Instance;
+namespace Bobby\Component\Http\Request;
 
 use Bobby\Component\Purifier\Purifier;
 
 trait FilterTrait
 {
+	private $filter;
 
 	public function setGlobalFilter(array $callbacks)
 	{

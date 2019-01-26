@@ -16,7 +16,9 @@
             "Bobby\\": "src/"
         },
         "files": [
-            "src/Contract/Http/Request.php"
+            "src/Contract/Http/Request/InstanceFactory.php",
+            "src/Contract/Http/Request/FilterTrait.php",
+            "src/Contract/Http/Request/Instance/InstanceTrait.php"
         ]
     }
 }
