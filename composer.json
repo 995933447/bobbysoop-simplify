@@ -1,0 +1,24 @@
+{
+    "name": "yangzhouhong/bobbysoop-simplify",
+    "description": "Php oop frame component library",
+    "type": "library",
+    "license": "Mit",
+    "authors": [
+        {
+            "name": "yangzhouhong",
+            "email": "yangzhouhong@bobby.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Bobby\\": "src/"
+        },
+        "files": [
+            "src/Component/Http/Request/InstanceFactory.php",
+            "src/Component/Http/Request/FilterTrait.php",
+            "src/Component/Http/Request/Instance/InstanceTrait.php"
+        ]
+    }
+}
