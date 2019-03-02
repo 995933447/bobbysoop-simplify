@@ -1,7 +1,7 @@
 <?php 
- namespace Bobby\Component\Http\Request\Instance;
+namespace Bobby\Component\Http\Request\Instance;
 
- use Bobby\Component\Http\Request\FilterTrait;
+use Bobby\Component\Http\Request\FilterTrait;
 
 trait InstanceTrait
 {
@@ -46,14 +46,14 @@ trait InstanceTrait
 	{
 	    $this->setParamters($method);
 
-	    if(!$parameters) return $this->$method;
+	    if (!$parameters) return $this->$method;
 
-	    if(isset($parameters[1]))
+	    if (isset($parameters[1]))
 	        list($parameterName, $defaultValue) = $parameters;
 	    else
 	        list($parameterName, $defaultValue) = [$parameters[0], null];
 
-	    if(is_array($parameterName)) return $this->$method[key($parameterName)] = current($parameterName);
+	    if (is_array($parameterName)) return $this->$method[key($parameterName)] = current($parameterName);
 
 	    return $this->$method[$parameterName]?? $defaultValue;
 	}
@@ -71,15 +71,21 @@ trait InstanceTrait
 	}
 
 	public function uri()
-	{
-	    if($pathinfo =$this->server('path_info')) {
+	{   
+	    if ($pathinfo = $this->server('path_info')) { 
 	        return $pathinfo;
 	    }
 
-	    $uri = ltrim($this->server('request_uri'), $this->server('php_self'));
-	    $uri = $uri == '' ? '/' : $uri;
+	    if(strpos($uri = $this->server('request_uri'), $script = $this->server('php_self')) === 0) {
+	    	$uri = mb_substr($uri, mb_strlen($script)); 
+	    }
 
-	    return substr($uri, strpos($uri, '?') !== false ? strpos($uri, '?') + 1 : 0);
+	    $uri = ($uri === '' || $uri{0} === '?') ? '/' : $uri;
+	    
+	    if($position = strpos($uri, '?') !== false) {
+	    	return substr($uri, 0, $position);
+	    }
+	    return $uri;
 	}
 
 	public function uriWithQuery()
